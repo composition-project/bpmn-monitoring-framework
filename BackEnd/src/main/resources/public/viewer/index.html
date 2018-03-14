@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  
+  <title>COMPOSITION BSL 5</title>
+</head>
+
+<body ng-app="bpmnViewerApp" ng-controller="BpmnViewerController" ng-cloak>
+
+  <div class="message" ng-show='message.isVisible'>
+    <div class="note" ng-show='message.msgType == "loading"'>
+      Loading BPMN...
+    </div>
+    <div class="note" ng-show='message.msgType == "empty"'>
+      No BPMN has been uploaded yet. Please <a href="/modeller/">go to Modeller</a> to upload a BPMN model.
+    </div>
+    <div class="note" ng-show='message.msgType == "error"'>
+      Error while loading BPMN...
+    </div>
+  </div>
+
+  <div id="side-panel" ng-show="canvas.isSidePanelVisible">
+    <div id="side-panel-close-btn" ng-click="hideSidePanel()">&times;</div>
+    <h1>Details</h1>
+    <div id="panel-group"></div>
+  </div>
+
+  <div id="setting-panel" ng-show="canvas.isSettingPanelVisible">
+    <div id="setting-panel-close-btn" ng-click="hideSettingPanel()">&times;</div>
+    <h1>Settings</h1>
+    
+    <!-- <label>Show color </label>
+    <input type="checkbox" ng-model="tempConfig.showColor">
+    <br /> -->
+    <label>Show header </label>
+    <input type="checkbox" ng-model="tempConfig.showHeader">
+    <br /><br /> 
+    <!-- <label>Show body </label>
+    <input type="checkbox" ng-model="tempConfig.showBody">
+    <br />
+    <label>Show footer </label>
+    <input type="checkbox" ng-model="tempConfig.showFooter">
+    <br /> -->
+    <label>Poll interval </label>
+    <input type="number" ng-model="tempConfig.pollInterval" required>
+    <br /><br />
+    <button ng-click="saveConfig()">Save</button>
+  </div>
+
+  <div id="control-panel">
+    <button ng-click="showSettingPanel()">Settings</button>
+    <button ng-click="startPolling()" ng-show="!status.isPolling">Start Monitoring</button>
+    <button ng-click="stopPolling()" ng-show="status.isPolling">Stop Monitoring</button>
+    
+  </div>
+
+  <div id="status-panel">
+    <div class="label">Last update: {{updateTime}}</div>
+    <div class="circle normal"></div><div class="label">normal</div>
+    <div class="circle stopped"></div><div class="label">stopped</div>
+    <div class="circle error"></div><div class="label">error</div>
+  </div>
+
+  <div id="canvas"></div>
+  <script src="index.js"></script>
+</body>
+
+</html>

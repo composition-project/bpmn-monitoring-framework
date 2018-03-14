@@ -1,0 +1,33 @@
+{
+  "name": "comoposition-bpmn-monitoring-framework",
+  "version": "0.0.0",
+  "description": "A BPMN monitoring framework for COMPOSITION",
+  "main": "app/index.js",
+  "author": {
+    "name": "Junhong Liang",
+    "url": "https://github.com/nikku"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "brfs": "^1.2.0",
+    "grunt": "~1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-connect": "~1.0.2",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "load-grunt-tasks": "~3.5.0",
+    "grunt-contrib-uglify": "^3.3.0"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.25.0",
+    "bpmn-js-properties-panel": "^0.16.1",
+    "camunda-bpmn-moddle": "^0.13.0",
+    "diagram-js": "^0.21.1",
+    "jquery": "^2.1.1",
+    "lodash": "^3.0.0",
+    "angular": "~1.6.8",
+    "angular-sanitize": "~1.6.8"
+  }
+}

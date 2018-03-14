@@ -1,0 +1,155 @@
+html,
+body,
+#canvas {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+    display: none !important;
+}
+
+body {
+    >.message {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: table;
+        font-size: 16px;
+        background-color: #FFFFFF;
+        z-index: 10;
+        .note {
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+        }
+    }
+}
+
+.diagram-note {
+    color: rgb(2, 0, 0);
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 19px;
+    padding: 0px;
+    min-height: 19px;
+    width: 50px;
+    text-align: center;
+}
+
+.item {
+    background-color: coral;
+    padding: 5px;
+}
+
+.background-overlay {
+    background: rgba(119, 184, 65, 0.575);
+    border-radius: 10px;
+}
+
+.green:not(.djs-connection) .djs-visual> :nth-child(1) {
+    fill: rgba(119, 184, 65, 0.575) !important;
+}
+
+.red:not(.djs-connection) .djs-visual> :nth-child(1) {
+    fill: rgba(219, 49, 19, 0.575) !important;
+}
+
+.yellow:not(.djs-connection) .djs-visual> :nth-child(1) {
+    fill: rgba(230, 201, 36, 0.575) !important;
+}
+
+.green.djs-shape,
+.red.djs-shape {
+    cursor: pointer;
+}
+
+#side-panel,
+#setting-panel {
+    position: absolute;
+    right: 0px;
+    width: 28%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgb(243, 243, 243);
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    font-family: 'Roboto', sans-serif;
+}
+
+#side-panel-close-btn,
+#setting-panel-close-btn {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 0;
+    margin: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#control-panel {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    z-index: 1;
+    button {
+        border: solid 1px #CCC;
+        background: #FAFAFA;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        padding: 8px;
+        cursor: default;
+    }
+    button:disabled,
+    button[disabled] {
+        cursor: not-allowed;
+    }
+}
+
+#status-panel {
+    position: fixed;
+    left: 200px;
+    bottom: 0;
+    padding: 20px;
+    height: 40px;
+    line-height: 40px;
+    z-index: 1;
+
+    .circle {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 10%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .circle.normal {
+        background-color: rgba(119, 184, 65, 0.575);
+    }
+
+    .circle.stopped {
+        background-color: rgba(219, 49, 19, 0.575);
+    }
+
+    .circle.error {
+        background-color: rgba(230, 201, 36, 0.575);
+    }
+
+    .label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-right: 20px;
+    }
+}

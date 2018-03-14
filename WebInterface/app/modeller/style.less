@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    height: 100%;
+    max-height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    >.message, .dialog {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: table;
+        font-size: 16px;
+        color: #111;
+        background-color: white;
+        position: absolute;
+        z-index: 99;
+        .note {
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            button {
+                border: solid 1px #CCC;
+                background: #FAFAFA;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                padding: 8px;
+                margin: 10px;
+            }
+        }
+    }
+    .canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    #js-properties-panel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 260px;
+        z-index: 10;
+        border-left: 1px solid #ccc;
+        overflow: auto;
+        background-color: #f8f8f8;
+        &:empty {
+            display: none;
+        }
+        >.djs-properties-panel {
+            padding-bottom: 70px;
+            min-height: 100%;
+        }
+    }
+        
+}
+
+.buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    >li {
+        display: inline-block;
+        margin-right: 10px;
+        >button {
+            border: solid 1px #CCC;
+            background: #FAFAFA;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            cursor: default;
+        }
+        >button:disabled,
+        button[disabled] {
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+    display: none !important;
+}
+
+@import "bpmn-js-properties-panel/styles/properties";

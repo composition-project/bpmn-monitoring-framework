@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>bpmn-js modeler demo</title>
+
+  <link rel="stylesheet" href="../vendor/diagram-js/css/diagram-js.css" />
+  <link rel="stylesheet" href="../vendor/bpmn-font/css/bpmn-embedded.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-app="bpmnModellerApp" ng-controller="BpmnModellerController">
+  <div class="content" id="container" ng-cloak>
+
+    <div class="message" ng-show="screen.isVisible">
+      <div class="note" ng-show="screen.type == 'main'">
+        <p>Welcome to the COMPOSITION BPMN Modeller. Please choose the source of BPMN model:</p>
+        <button ng-click="loadUploadedDiagram()">Uploaded Model</button>
+        <button ng-click="loadDFMDiagramList()">DFM</button>
+        <button onclick="document.getElementById('selectFile').click();">Hard Drive</button>
+        <input type="file" id="selectFile" style="display: none;" onchange="angular.element(this).scope().loadHardDriveDiagram(this)">
+        <button ng-click="createNewDiagram()">Create New Diagram</button>
+      </div>
+
+      <div class="note" ng-show="screen.type == 'loading'">
+        Loading BPMN...
+      </div>
+    </div>
+
+
+    <div class="dialog" ng-show="dialog.isVisible">
+
+      <div class="note" ng-show="dialog.type == 'msg'">
+        <p ng-bind="dialog.msgContent"></p>
+        <button ng-click="closeDialog(); showMainScreen()">Back to main menu</button>
+      </div>
+
+      <div class="note" ng-show="dialog.type == 'dfm_list'">
+        <div ng-repeat="entry in dialog.listContent" ng-click="loadRemoteDiagram(entry.name)">
+          <button>{{entry.name}}</button>
+        </div>
+        <button ng-click="closeDialog(); showMainScreen()">Back to main menu</button>
+      </div>
+
+      <div class="note" ng-show="dialog.type == 'dfm_upload'">
+        <label>Model ID: </label>
+        <!-- <input type="text" ng-model="dialog.dfmUploadId"><br /> -->
+        <button ng-click="uploadDiagramToDFM()">Upload</button>
+        <button ng-click="closeDialog()">Cancel</button>
+      </div>
+
+    </div>
+
+    <div class="canvas" id="js-canvas"></div>
+    <div id="js-properties-panel"></div>
+
+    <ul class="buttons">
+      <li>
+        <button ng-click="downloadBpmn()">
+          BPMN diagram
+        </button>
+      </li>
+      <li>
+        <button ng-click="downloadSvg()">
+          SVG image
+        </button>
+      </li>
+      <li>
+        <button ng-click="uploadDiagram()">
+          Upload for monitoring
+        </button>
+      </li>
+      <li>
+        <button ng-click="showUploadToDFMDialog()">
+          Upload to DFM
+        </button>
+      </li>
+      <li>
+        <button ng-click="showMainScreen()">
+          Open New Diagram
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <script src="./index.js"></script>
+
+</html>

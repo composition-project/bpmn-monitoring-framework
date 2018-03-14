@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0aszwot</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0aszwot" sourceRef="StartEvent_1" targetRef="machine_1" />
+    <bpmn:sequenceFlow id="SequenceFlow_1le1yt2" sourceRef="machine_1" targetRef="machine_2" />
+    <bpmn:sequenceFlow id="SequenceFlow_19jpbqt" sourceRef="machine_3" targetRef="machine_4" />
+    <bpmn:serviceTask id="machine_1" name="Laser Mark">
+      <bpmn:documentation>This machine marks the ID of PCB with laser.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_0aszwot</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1le1yt2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="machine_3" name="SPI Inspection">
+      <bpmn:documentation>This machine inspects the solder paste on PCBs.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_0dk08oy</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_19jpbqt</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="machine_4" name="Mount">
+      <bpmn:documentation>This machine places eletronic component on PCBs.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_19jpbqt</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_18w8r01</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="machine_5" name="2D AOI">
+      <bpmn:documentation>This machine inspects the quality of PCB with placed eletronic components.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_18w8r01</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0qzsyyg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="machine_2" name="DEK solder screen printing">
+      <bpmn:documentation>This machine screen prints solder on PCBs.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_1le1yt2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0dk08oy</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0dk08oy" sourceRef="machine_2" targetRef="machine_3" />
+    <bpmn:sequenceFlow id="SequenceFlow_18w8r01" sourceRef="machine_4" targetRef="machine_5" />
+    <bpmn:endEvent id="EndEvent_0l7arg0">
+      <bpmn:incoming>SequenceFlow_0h0z4f3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0h0z4f3" sourceRef="machine_7" targetRef="EndEvent_0l7arg0" />
+    <bpmn:serviceTask id="machine_7" name="3D AOI">
+      <bpmn:documentation>The baked PCBs are inspected in this machine.</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_0zxzb4j</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0h0z4f3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="machine_6" name="Reflow">
+      <bpmn:documentation>PCBs are baked in this machine, so that the solder paste hardens and therefore stablizing the placed components</bpmn:documentation>
+      <bpmn:incoming>SequenceFlow_0qzsyyg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0zxzb4j</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0qzsyyg" sourceRef="machine_5" targetRef="machine_6" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zxzb4j" sourceRef="machine_6" targetRef="machine_7" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="635" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="608" y="138" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0aszwot_di" bpmnElement="SequenceFlow_0aszwot">
+        <di:waypoint xsi:type="dc:Point" x="671" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="696" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="638.5" y="99" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1le1yt2_di" bpmnElement="SequenceFlow_1le1yt2">
+        <di:waypoint xsi:type="dc:Point" x="796" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="830" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="768" y="99" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_19jpbqt_di" bpmnElement="SequenceFlow_19jpbqt">
+        <di:waypoint xsi:type="dc:Point" x="1057" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1083" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1025" y="99" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0gfh6h8_di" bpmnElement="machine_1">
+        <dc:Bounds x="696" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1rsa2ag_di" bpmnElement="machine_3">
+        <dc:Bounds x="957" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1d4633r_di" bpmnElement="machine_4">
+        <dc:Bounds x="1083" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1ydu4p3_di" bpmnElement="machine_5">
+        <dc:Bounds x="1210" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1t4haeh_di" bpmnElement="machine_2">
+        <dc:Bounds x="830" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dk08oy_di" bpmnElement="SequenceFlow_0dk08oy">
+        <di:waypoint xsi:type="dc:Point" x="930" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="957" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="898.5" y="99" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_18w8r01_di" bpmnElement="SequenceFlow_18w8r01">
+        <di:waypoint xsi:type="dc:Point" x="1183" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1210" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1196.5" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0l7arg0_di" bpmnElement="EndEvent_0l7arg0">
+        <dc:Bounds x="1584.627" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1602.627" y="142" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0h0z4f3_di" bpmnElement="SequenceFlow_0h0z4f3">
+        <di:waypoint xsi:type="dc:Point" x="1567" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1585" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1576" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_11jr711_di" bpmnElement="machine_7">
+        <dc:Bounds x="1467" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1z04bnv_di" bpmnElement="machine_6">
+        <dc:Bounds x="1341" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qzsyyg_di" bpmnElement="SequenceFlow_0qzsyyg">
+        <di:waypoint xsi:type="dc:Point" x="1310" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1341" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1325.5" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zxzb4j_di" bpmnElement="SequenceFlow_0zxzb4j">
+        <di:waypoint xsi:type="dc:Point" x="1441" y="120" />
+        <di:waypoint xsi:type="dc:Point" x="1467" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1454" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
