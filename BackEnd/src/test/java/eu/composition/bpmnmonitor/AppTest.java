@@ -1,4 +1,4 @@
-package eu.composition.bpmnmonitor.UbifactoryAnnotator;
+package eu.composition.bpmnmonitor;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
