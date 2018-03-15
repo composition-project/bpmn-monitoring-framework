@@ -30,9 +30,6 @@ public class RestController {
     private static Gson gson = new Gson();
     private static BackEnd be = new BackEnd();
 
-    private static String dfmEndPoint = "http://130.192.86.227:8080/composition/resources/dfm";
-
-
     /**
      * Get the BPMN model stored in this application. If no BPMN model has been
      * saved previously, an empty string will return.
@@ -66,7 +63,7 @@ public class RestController {
      *
      * @return A Route object, which returns a JSON string representing the list of models in DFM
      */
-    public static Route getRemoteBpmnList() {
+    public static Route getRemoteBpmnList(final String dfmEndpoint) {
         return (req, res) -> {
 
             // Hard-coded the list for the moment
@@ -81,9 +78,9 @@ public class RestController {
      *
      * @return A Route, which returns the BPMN model as a XML string
      */
-    public static Route getRemoteBpmn() {
+    public static Route getRemoteBpmn(final String dfmEndpoint) {
         return (req, res) -> {
-            String url = dfmEndPoint
+            String url = dfmEndpoint
                     + "/getBPMN?factoryID=TEST_ID2"
                     + "&bpmnID=" + req.params(":id");
 
@@ -101,10 +98,10 @@ public class RestController {
      *
      * @return A Route
      */
-    public static Route setRemoteBpmn() {
+    public static Route setRemoteBpmn(final String dfmEndpoint) {
         return (req, res) -> {
 
-            String url = dfmEndPoint + "/setBPMN";
+            String url = dfmEndpoint + "/setBPMN";
             return sendXMLPost(url, req.body());
         };
     }
