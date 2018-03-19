@@ -4,6 +4,7 @@ import eu.composition.bpmnmonitor.messaging.MachineStatus;
 import eu.composition.bpmnmonitor.messaging.ProcessStatus;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,12 +16,15 @@ public class BackEnd {
     private int[] processedNumbers;
     private int[] previousOnOffStatus;
     private LocalDateTime dateTime;
+    private ZoneId zoneId;
 
     public BackEnd() {
         bpmnModel = "";
         processedNumbers = new int[] {0,0,0,0,0,0,0};
         previousOnOffStatus = new int[] {0,0,0,0,0,0,0};
         dateTime = LocalDateTime.now();
+
+        zoneId = ZoneId.systemDefault();
     }
 
     public String getBpmnModel(){
@@ -37,7 +41,8 @@ public class BackEnd {
 
         dateTime = dateTime.plusMinutes(1);
         dateTime = dateTime.plusSeconds(27);
-        ps.setTime(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        ps.setTime(dateTime.atZone(zoneId).toEpochSecond());
+        //ps.setTime(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         ArrayList<MachineStatus> machineList = new ArrayList<MachineStatus>();
 

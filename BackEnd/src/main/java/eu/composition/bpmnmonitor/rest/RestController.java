@@ -81,7 +81,7 @@ public class RestController {
     public static Route getRemoteBpmn(final String dfmEndpoint) {
         return (req, res) -> {
             String url = dfmEndpoint
-                    + "/getBPMN?factoryID=TEST_ID2"
+                    + "/getBPMN?factoryID=BSL_ID"
                     + "&bpmnID=" + req.params(":id");
 
             String p = sendGet(url);

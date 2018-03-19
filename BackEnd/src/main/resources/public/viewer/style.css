@@ -141,11 +141,11 @@ body > .message .note {
   background-color: rgba(119, 184, 65, 0.575);
 }
 /* line 141, app/viewer/style.less */
-#status-panel .circle.stopped {
+#status-panel .circle.error {
   background-color: rgba(219, 49, 19, 0.575);
 }
 /* line 145, app/viewer/style.less */
-#status-panel .circle.error {
+#status-panel .circle.stopped {
   background-color: rgba(230, 201, 36, 0.575);
 }
 /* line 149, app/viewer/style.less */

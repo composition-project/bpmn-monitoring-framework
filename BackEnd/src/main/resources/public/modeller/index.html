@@ -42,11 +42,16 @@
         <button ng-click="closeDialog(); showMainScreen()">Back to main menu</button>
       </div>
 
-      <div class="note" ng-show="dialog.type == 'dfm_upload'">
+      <!-- <div class="note" ng-show="dialog.type == 'dfm_upload'">
         <label>Model ID: </label>
-        <!-- <input type="text" ng-model="dialog.dfmUploadId"><br /> -->
         <button ng-click="uploadDiagramToDFM()">Upload</button>
         <button ng-click="closeDialog()">Cancel</button>
+      </div> -->
+
+      <div class="note" ng-show="dialog.type == 'upload_success'">
+        <p>BPMN model successfully uploaded for monitoring!</p>
+        <button onclick="window.location.href = '/viewer/'">Go to Viewer</button>
+        <button ng-click="closeDialog()">Back to Editor</button>
       </div>
 
     </div>
@@ -71,7 +76,7 @@
         </button>
       </li>
       <li>
-        <button ng-click="showUploadToDFMDialog()">
+        <button ng-click="uploadDiagramToDFM()">
           Upload to DFM
         </button>
       </li>

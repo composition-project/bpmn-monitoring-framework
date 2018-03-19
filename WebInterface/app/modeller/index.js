@@ -105,7 +105,6 @@ module.controller('BpmnModellerController', ['$scope', '$http', '$compile', func
     $http.get('/rest/bpmn/remote/' + id)
       .then(function (response) { // Handle success
         // show the diagram
-        console.log(response.data);
         $scope.openDiagram(response.data);
       }, function (response) { // Handle error
         $scope.showMsgDialog('Error getting model with ID ' + id + ' from DFM');
@@ -158,7 +157,8 @@ module.controller('BpmnModellerController', ['$scope', '$http', '$compile', func
       // Use ajax to upload BPMN
       $.post("/rest/bpmn/local", xml)
         .done(function () {
-          alert("BPMN post successful!");
+          $scope.showUploadSuccessDialog();
+          $scope.$digest();
         })
         .fail(function () {
           alert("BPMN post failed!");
@@ -240,6 +240,12 @@ module.controller('BpmnModellerController', ['$scope', '$http', '$compile', func
     $scope.dialog.isVisible = true;
     $scope.dialog.type = 'dfm_list';
     $scope.dialog.listContent = list;
+  }
+
+  // Show the upload to DFM dialog
+  $scope.showUploadSuccessDialog = function () {
+    $scope.dialog.isVisible = true;
+    $scope.dialog.type = 'upload_success';
   }
 
   // Show the upload to DFM dialog

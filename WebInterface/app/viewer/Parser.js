@@ -24,7 +24,18 @@
 module.exports.parse = function (response) {
     var parsedRes = {};
 
-    parsedRes['time'] = response.data.time;
+    console.log(JSON.stringify(response.data));
+
+    var date = new Date(response.data.time * 1000);
+    var year = date.getFullYear();
+    var month = date.getMonth() >= 10 ? date.getMonth() : '0' + date.getMonth();
+    var day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate();
+    var hour = date.getHours() >= 10 ? date.getHours() : '0' + date.getHours();
+    var min = date.getMinutes() >= 10 ? date.getMinutes() : '0' + date.getMinutes();
+    var sec = date.getSeconds() >= 10 ? date.getSeconds() : '0' + date.getSeconds();
+    var time = day + '-' + month + '-' + year + ' ' + hour + ':' + min + ':' + sec;
+
+    parsedRes['time'] = time;
     parsedRes['machines'] = {};
     response.data.machines.forEach(function (e) {
 

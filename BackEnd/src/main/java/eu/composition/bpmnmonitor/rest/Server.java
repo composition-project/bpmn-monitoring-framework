@@ -28,8 +28,8 @@ public class Server {
         staticFiles.location(STATIC_PATH);
 
         // Only for development
-        // String absPath = new File("src\\main\\resources\\public").getAbsolutePath();
-        // staticFiles.externalLocation(absPath);
+        //String absPath = new File("src\\main\\resources\\public").getAbsolutePath();
+        //staticFiles.externalLocation(absPath);
 
         // APIs related to BPMN models
         get("/rest/bpmn/local", RestController.getLocalBpmn());

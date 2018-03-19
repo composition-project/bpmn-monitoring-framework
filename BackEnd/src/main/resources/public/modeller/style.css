@@ -51,7 +51,7 @@ a:link {
   padding: 8px;
   margin: 10px;
 }
-/* line 46, app/modeller/style.less */
+/* line 47, app/modeller/style.less */
 .content .canvas {
   position: absolute;
   top: 0;
@@ -59,7 +59,7 @@ a:link {
   right: 0;
   bottom: 0;
 }
-/* line 54, app/modeller/style.less */
+/* line 55, app/modeller/style.less */
 .content #js-properties-panel {
   position: absolute;
   top: 0;
@@ -71,16 +71,16 @@ a:link {
   overflow: auto;
   background-color: #f8f8f8;
 }
-/* line 64, app/modeller/style.less */
+/* line 65, app/modeller/style.less */
 .content #js-properties-panel:empty {
   display: none;
 }
-/* line 67, app/modeller/style.less */
+/* line 68, app/modeller/style.less */
 .content #js-properties-panel > .djs-properties-panel {
   padding-bottom: 70px;
   min-height: 100%;
 }
-/* line 75, app/modeller/style.less */
+/* line 76, app/modeller/style.less */
 .buttons {
   position: fixed;
   bottom: 20px;
@@ -89,12 +89,12 @@ a:link {
   margin: 0;
   list-style: none;
 }
-/* line 82, app/modeller/style.less */
+/* line 83, app/modeller/style.less */
 .buttons > li {
   display: inline-block;
   margin-right: 10px;
 }
-/* line 85, app/modeller/style.less */
+/* line 86, app/modeller/style.less */
 .buttons > li > button {
   border: solid 1px #CCC;
   background: #FAFAFA;
@@ -102,7 +102,7 @@ a:link {
   padding: 8px;
   cursor: default;
 }
-/* line 92, app/modeller/style.less */
+/* line 93, app/modeller/style.less */
 .buttons > li > button:disabled,
 .buttons > li button[disabled] {
   cursor: not-allowed;
@@ -112,7 +112,7 @@ a:link {
   templates compile.  The !important is important given that there may be 
   other selectors that are more specific or come later and might alter display.  
  */
-/* line 106, app/modeller/style.less */
+/* line 107, app/modeller/style.less */
 [ng\:cloak],
 [ng-cloak],
 .ng-cloak {
