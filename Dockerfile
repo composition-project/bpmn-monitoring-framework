@@ -1,25 +1,43 @@
-FROM maven:3.5
+# Build the frontend source
 
-ENV BASE_DIR /bpmns
+FROM node:9 as frontend_builder
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get install -y npm \
-    && apt-get install -y build-essential
+ENV BASE_DIR /bpmn_monitor
 
-ADD . ${BASE_DIR}
+COPY . ${BASE_DIR}
 
-RUN cd ${BASE_DIR}/WebInterface \
-    && npm install \
+WORKDIR ${BASE_DIR}/WebInterface
+
+RUN npm install \
     && npm install -g grunt-cli \
-    && grunt deploy \
-    && cd ${BASE_DIR}/BackEnd \
-    && mvn package
+    && grunt deploy
     
-EXPOSE 8080
+# ------------------------
+# Build the backend source
+    
+FROM maven:3.5 as backend_builder
+
+ENV BASE_DIR /bpmn_monitor
+
+COPY --from=frontend_builder ${BASE_DIR}/BackEnd/ ${BASE_DIR}/
 
 WORKDIR ${BASE_DIR}
 
-ENTRYPOINT ["java", "-jar", "./BackEnd/target/BpmnMonitor.jar"]
+RUN mvn package
+    
+# ------------------------
+# Copy built backend to runtime environment
+    
+FROM java:8-jre-alpine
+
+ENV BASE_DIR /bpmn_monitor
+
+WORKDIR ${BASE_DIR}
+
+COPY --from=backend_builder ${BASE_DIR}/target/BpmnMonitor.jar .
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "./BpmnMonitor.jar"]
 
 CMD ["-p", "8080"]
