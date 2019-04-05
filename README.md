@@ -16,4 +16,4 @@ To customize parameters for the program:
 ```docker
 docker run --name bpmn_monitor -p 8080:1234 bpmn_monitor -p 1234 -dfm <DFM endpoint>
 ```
-The ``-p`` argument specifies the port the program listens to; ``-dfm`` specifies the endpoint of DFM. Right now, the default endpoint is: http://130.192.86.227:8080/composition/resources/dfm
+The ``-p`` argument specifies the port the program listens to; ``-dfm`` specifies the endpoint of DFM.
